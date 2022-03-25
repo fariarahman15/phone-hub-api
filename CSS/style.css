@@ -1,0 +1,10 @@
+/* font family  */
+body{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.page-title h1{
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight:900;
+    
+}
