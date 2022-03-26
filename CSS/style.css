@@ -8,3 +8,8 @@ body{
     font-weight:900;
     
 }
+
+#show-more-button{
+    display: none;
+}
+
