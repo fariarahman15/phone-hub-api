@@ -2,9 +2,8 @@
 const searchPhones = () => {
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
-    console.log(searchText);
     searchField.value = '';
-
+    
     // fetch API 
     const url1 = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
     fetch(url1)
@@ -17,10 +16,12 @@ const searchPhones = () => {
 
 
 const displayResults = data => {
-    console.log(data);
     const searchResult = document.getElementById('search-result');
     data.forEach(info => {
-        console.log(info);
+        // console.log(info);
+        
+        const id = `${info.slug}`;
+        // console.log(id);
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
@@ -35,30 +36,26 @@ const displayResults = data => {
                       <p class="card-text">${info.brand}</p>
                     </div>
                     <div class="card-footer py-0 bg-white border-0">
-                        <button onclick="explore()" id="explore-button" class="btn btn-primary">Explore</button>
+                        <button onclick="loadexplore('${info.slug}')" id="explore-button" class="btn btn-primary">Explore</button>
                     </div>
                   </div>
         `;
-        searchResult.appendChild(div);
-            
-        const id = info.slug;
-        console.log(id);
-        const explore = (id) => {
-            // fetch API 
-            const url2 = `https://openapi.programming-hero.com/api/phone/${id}`
-            fetch(url2)
-    
-            .then(response => response.json())
-            .then(details => console.log(details.data));
-        }
-        explore(id);
-    });
-    // const explore = document.getElementById('explore-result');
-    
+        searchResult.appendChild(div); 
 
-    
-    
+        
+    });
+
 }
 
+
+const loadexplore = id =>{
+    
+    console.log(id);
+    // fetch API 
+    const url2 = `https://openapi.programming-hero.com/api/phone/${id}`
+    fetch(url2)
+        .then(response => response.json())
+        .then(result => console.log(result.data));
+}
 
 
