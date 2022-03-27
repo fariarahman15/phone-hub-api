@@ -3,15 +3,14 @@ const searchPhones = () => {
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     searchField.value = '';
-    
+    let exploreResult = document.getElementById('explore-result');
+        exploreResult.style.display = 'none';
     
     // fetch API 
     const url1 = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
     fetch(url1)
         .then(response => response.json())
         .then(result => displayResults(result.data));
-
-        
 
 }
 
@@ -68,20 +67,15 @@ const displayExplore = idDetail => {
                     <div class="card-body mt-2">
                         <h5 class="card-title">${idDetail.name}</h5>
                         <p class="card-text"><small class="text-muted">${idDetail.brand}</small></p>
-
                         <p class="card-text"><small class="text-muted"> Release Date: ${idDetail.releaseDate ? idDetail.releaseDate : "Not Found"}</small></p>
-
                         <p class="card-text"><small class="text-muted">Main Features: <br> 
                         storage: ${idDetail.mainFeatures.storage} <br>
                         memory: ${idDetail.mainFeatures.memory} <br>
                         chipSet: ${idDetail.mainFeatures.chipSet} <br>
                         displaySize: ${idDetail.mainFeatures.displaySize} 
-                        
                         </small></p>
-
                         <p class="card-text"><small class="text-muted">Sensors: 
                         ${idDetail.mainFeatures.sensors}</small></p>
-
                         ${idDetail.others ?  
                             `<p class="card-text"><small class="text-muted">Others Information: <br>
                             Bluetooth: ${idDetail?.others?.Bluetooth} <br>
