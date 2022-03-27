@@ -1,13 +1,14 @@
 /* font family  */
-body{
-    font-family: 'Source Sans Pro', sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif&display=swap');
 
 .page-title h1{
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight:900;
+    font-weight: 900;
+    font-size: 3.5rem;
+    font-family: 'PT Serif', serif;
     
 }
+
+
 
 #show-more-button{
     display: none;
@@ -21,4 +22,12 @@ body{
     transform: scale(1.05);
     transition-duration: 500ms;
     
+}
+
+#invalid{
+    display: none;
+}
+
+#not-found{
+    display: none;
 }

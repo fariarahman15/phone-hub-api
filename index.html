@@ -14,28 +14,38 @@
     <!-- font embading  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
+
+
+    <!-- fontawesome kit  -->
+    <script src="https://kit.fontawesome.com/3d8ddcb68c.js" crossorigin="anonymous"></script>
 
     <!-- title  -->
-    <title>Phone Finder</title>
+    <title>Phone Hub</title>
 </head>
 
 <body>
     <!-- header section  -->
     <header>
-        <div class="page-title bg-light">
-            <h1 class="text-center">Phone Finder</h1>
+
+        <div class="page-title">
+            <h1 class="text-center font-monospace" style="color: #2C394B;">PHONE HUB</h1>
         </div>
 
         <div class="container d-flex justify-content-center w-75 my-5">
             <input id="search-field" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button onclick="searchPhones()" id="button-search" class="btn btn-outline-primary" type="submit">Search</button>
-            
         </div>
 
-          
-
+        <div id="search-msg"  class="container card  w-50 my-5 p-5 text-center">
+            <h1 style="color: #2C394B;">Search Your Desired Phone</h1>
+      </div>
+        
     </header>
+
+    <h2 id="invalid" class="container w-50 my-5 text-center alert alert-danger"><i class="fa-solid fa-triangle-exclamation"></i> Invalid </h2>
+
+    <h2 id="not-found" class="container w-50 my-5 text-center alert alert-danger"><i class="fa-solid fa-triangle-exclamation"></i> No Phone Found </h2>
 
     <!-- main body  -->
     <main>
