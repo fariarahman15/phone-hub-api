@@ -3,17 +3,13 @@ const searchPhones = () => {
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     searchField.value = '';
-    if(searchText == ''){
-        let invalid = document.getElementById('invalid');
-        invalid.style.display = 'block';
-    }
     let exploreResult = document.getElementById('explore-result');
     exploreResult.style.display = 'none';
     let notFound = document.getElementById('not-found');
     notFound.style.display = 'none';
     let searchMsg = document.getElementById('search-msg');
     searchMsg.style.display = 'none';
-        
+    
     // fetch API 
     const url1 = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
     fetch(url1)
@@ -26,11 +22,13 @@ const searchPhones = () => {
 const displayResults = data => {
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
+    
     if(data.length === 0)
     {
         let notFound = document.getElementById('not-found');
         notFound.style.display = 'block';
     }
+    
     const first20Data = data.slice(0,20);
     data.forEach(first20Data => {
         const div = document.createElement('div');
@@ -56,6 +54,7 @@ const displayResults = data => {
 }
 
 
+// load explore 
 const loadExplore = id => {
     // fetch API 
     const url2 = `https://openapi.programming-hero.com/api/phone/${id}`
@@ -64,6 +63,7 @@ const loadExplore = id => {
     .then(info => displayExplore(info.data));
 }
 
+// display explore 
 const displayExplore = idDetail => {
     const exploreResult = document.getElementById('explore-result'); 
     exploreResult.textContent = '' ;

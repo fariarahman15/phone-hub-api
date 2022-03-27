@@ -1,13 +1,12 @@
-/* font family  */
-@import url('https://fonts.googleapis.com/css2?family=PT+Serif&display=swap');
+/* font import  */
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap');
 
 .page-title h1{
-    font-weight: 900;
+    font-weight: 700;
     font-size: 3.5rem;
     font-family: 'PT Serif', serif;
     
 }
-
 
 
 #show-more-button{
