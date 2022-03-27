@@ -4,19 +4,21 @@ const searchPhones = () => {
     const searchText = searchField.value;
     searchField.value = '';
     
+    
     // fetch API 
     const url1 = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
     fetch(url1)
         .then(response => response.json())
         .then(result => displayResults(result.data));
 
-    const showMoreButton = document.getElementById('show-more-button');
-    showMoreButton.style.display = 'block';
+        
+
 }
 
 // display result 
 const displayResults = data => {
     const searchResult = document.getElementById('search-result');
+    searchResult.textContent = '';
     const first20Data = data.slice(0,20);
     data.forEach(first20Data => {
         const div = document.createElement('div');
@@ -51,8 +53,9 @@ const loadExplore = id => {
 }
 
 const displayExplore = idDetail => {
-    console.log(idDetail);
     const exploreResult = document.getElementById('explore-result'); 
+    exploreResult.textContent = '' ;
+    exploreResult.style.display = 'block';
     const div = document.createElement('div');
     div.classList.add('card');
     div.classList.add('mb-3');
@@ -64,7 +67,10 @@ const displayExplore = idDetail => {
                 <div class="col-md-8">
                     <div class="card-body mt-2">
                         <h5 class="card-title">${idDetail.name}</h5>
-                        <p class="card-text"><small class="text-muted">${idDetail.releaseDate}</small></p>
+                        <p class="card-text"><small class="text-muted">${idDetail.brand}</small></p>
+
+                        <p class="card-text"><small class="text-muted"> Release Date: ${idDetail.releaseDate ? idDetail.releaseDate : "Not Found"}</small></p>
+
                         <p class="card-text"><small class="text-muted">Main Features: <br> 
                         storage: ${idDetail.mainFeatures.storage} <br>
                         memory: ${idDetail.mainFeatures.memory} <br>
@@ -76,15 +82,16 @@ const displayExplore = idDetail => {
                         <p class="card-text"><small class="text-muted">Sensors: 
                         ${idDetail.mainFeatures.sensors}</small></p>
 
+                        ${idDetail.others ?  
+                            `<p class="card-text"><small class="text-muted">Others Information: <br>
+                            Bluetooth: ${idDetail?.others?.Bluetooth} <br>
+                            GPS: ${idDetail?.others?.GPS} <br>
+                            NFC: ${idDetail?.others?.NFC} <br>
+                            Radio: ${idDetail?.others?.Radio} <br>
+                            USB: ${idDetail?.others?.USB} <br>
+                            WLAN: ${idDetail?.others?.WLAN} </small></p>` : ""
+                        } 
 
-
-                        <p class="card-text"><small class="text-muted">Others Information: <br>
-                        Bluetooth: ${idDetail.others.Bluetooth} <br>
-                        GPS: ${idDetail.others.GPS} <br>
-                        NFC: ${idDetail.others.NFC} <br>
-                        Radio: ${idDetail.others.Radio} <br>
-                        USB: ${idDetail.others.USB} <br>
-                        WLAN: ${idDetail.others.WLAN} </small></p>
                     </div>
                 </div>
             </div>
